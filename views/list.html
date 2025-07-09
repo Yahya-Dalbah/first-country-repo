@@ -1,0 +1,17 @@
+<div class="mx-3">
+  <input type="text" class="form-control mb-3" ng-model="search" />
+  <ul class="list-group">
+    <li
+      class="list-group-item"
+      ng-repeat="country in countries | filter: search | orderBy: 'name.common'"
+    >
+      <a
+        href="/countries/{{country.name.common}}"
+        class="d-flex align-items-center"
+      >
+        <img ng-src="{{country.flags.png}}" width="20" height="20" alt="" />
+        <span class="ms-2">{{country.name.common}}</span>
+      </a>
+    </li>
+  </ul>
+</div>

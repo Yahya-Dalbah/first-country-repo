@@ -1,0 +1,11 @@
+{
+  "version": 1.1,
+  "tags": [],
+  "attributes": [
+    { "name": "ng-app", "description": "Bootstraps the app", "valueSet": "v" },
+    { "name": "ng-model", "description": "Two-way data binding", "valueSet": "v" },
+    { "name": "ng-repeat", "description": "Repeat over a collection", "valueSet": "v" },
+    { "name": "ng-click", "description": "Click event binding", "valueSet": "v" },
+    { "name": "ng-controller", "description": "Defines controller scope", "valueSet": "v" }
+  ]
+}
