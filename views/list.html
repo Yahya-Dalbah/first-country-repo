@@ -1,5 +1,19 @@
-<div class="mx-3">
-  <input type="text" class="form-control mb-3" ng-model="search" />
+<div class="mx-3 home-page">
+  <div class="input-group mb-3 shadow-soft rounded py-2">
+    <span class="input-group-text px-4 border-0 bg-white">
+      <i
+        class="fa-solid fa-magnifying-glass"
+        style="color: var(--dark-gray)"
+      ></i>
+    </span>
+    <input
+      type="text"
+      class="form-control border-0 focus-ring focus-outline-none placeholder-text-gray"
+      placeholder="Search for a country"
+      style="color: var(--dark-gray)"
+      ng-model="search"
+    />
+  </div>
   <ul class="list-group">
     <li
       class="list-group-item"
@@ -7,10 +21,9 @@
     >
       <a
         href="/countries/{{country.name.common}}"
-        class="d-flex align-items-center"
+        class="text-decoration-none"
       >
-        <img ng-src="{{country.flags.png}}" width="20" height="20" alt="" />
-        <span class="ms-2">{{country.name.common}}</span>
+        <div ng-include="'country.html'"></div>
       </a>
     </li>
   </ul>
