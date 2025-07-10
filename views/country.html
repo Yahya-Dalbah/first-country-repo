@@ -1,12 +1,17 @@
-<div class="container mt-4 details-page">
-  <div class="card p-4 shadow-sm">
-    <div class="d-flex gap-3 mb-4">
-      <img ng-src="{{ country.flags.png }}" alt="Flag" width="100" />
-      <h1>{{ country.name.common }}</h1>
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <img
+      ng-src="{{ $ctrl.country.flags.png }}"
+      class="card-img-top"
+      alt="Flag"
+      width="100"
+      height="250"
+    />
+    <div class="p-4">
+      <h1 class="fs-3 fw-bolder mb-4" >{{ $ctrl.country.name.common }}</h1>
+      <p><span class="fw-bold">population</span>: {{$ctrl.country.population}}</p>
+      <p><span class="fw-bold">Region</span>: {{ $ctrl.country.region }}</p>
+      <p><span class="fw-bold">Capital</span>: {{ $ctrl.country.capital[0] }}</p>
     </div>
-    <p>official name: <b>{{country.name.official}}</b></p>
-    <p>population: <b>{{country.population}}</b></p>
-    <p>Region: <b>{{ country.region }}</b></p>
-    <p>Capital: <b>{{ country.capital[0] }}</b></p>
   </div>
 </div>

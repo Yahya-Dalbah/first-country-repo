@@ -1,3 +1,5 @@
+console.log("country.js loaded");
+
 let myApp = angular.module("myApp", ["ngRoute"]);
 
 myApp.config([
@@ -11,8 +13,7 @@ myApp.config([
         controller: "listController",
       })
       .when("/countries/:countryName", {
-        templateUrl: "./views/country.html",
-        controller: "countryController",
+        template: "<country-page></country-page>",
       })
       .otherwise({ redirectTo: "/" });
   },
@@ -22,10 +23,18 @@ myApp.controller("listController", [
   "$scope",
   "$http",
   function ($scope, $http) {
+    $scope.regions = ["Africa", "America", "Asia", "Europe", "Oceania"]
+    $scope.selectedRegion = ""
+    $scope.selectRegion = function(region){
+      $scope.selectedRegion = region
+    }
     $http
-      .get("https://restcountries.com/v3.1/all?fields=name,flags")
+      .get(
+        "https://restcountries.com/v3.1/all?fields=name,flags,region,population,capital"
+      )
       .then((data) => {
         $scope.countries = data.data;
+        console.log(data.data)
       });
   },
 ]);
