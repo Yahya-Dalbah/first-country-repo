@@ -1,5 +1,3 @@
-console.log("country.js loaded");
-
 let myApp = angular.module("myApp", ["ngRoute"]);
 
 myApp.config([
@@ -12,8 +10,8 @@ myApp.config([
         templateUrl: "./views/list.html",
         controller: "listController",
       })
-      .when("/countries/:countryName", {
-        template: "<country-page></country-page>",
+      .when("/", {
+        template: "<detailed-country-page></detailed-country-page>",
       })
       .otherwise({ redirectTo: "/" });
   },
