@@ -1,5 +1,5 @@
 angular.module("myApp").component("detailedCountryPage", {
-  templateUrl: "./views/detailed-country.html",
+  templateUrl: "./pages/detailed-country/detailed-country.html",
   controller: [
     "$routeParams",
     "$http",
@@ -7,7 +7,9 @@ angular.module("myApp").component("detailedCountryPage", {
     function ($routeParams, $http, $timeout) {
       this.$onInit = function () {
         $http
-          .get(`https://restcountries.com/v3.1/name/${$routeParams.countryName}`)
+          .get(
+            `https://restcountries.com/v3.1/name/${$routeParams.countryName}`
+          )
           .then((response) => {
             const self = this;
             self.country = response.data[0];
