@@ -7,7 +7,7 @@ angular.module("myApp").component("detailedCountryPage", {
     function ($routeParams, $http, $timeout) {
       this.$onInit = function () {
         $http
-          .get(`https://restcountries.com/v3.1/name/Belgium`)
+          .get(`https://restcountries.com/v3.1/name/${$routeParams.countryName}`)
           .then((response) => {
             const self = this;
             self.country = response.data[0];

@@ -10,7 +10,7 @@ myApp.config([
         templateUrl: "./views/list.html",
         controller: "listController",
       })
-      .when("/", {
+      .when("/countries/:countryName", {
         template: "<detailed-country-page></detailed-country-page>",
       })
       .otherwise({ redirectTo: "/" });

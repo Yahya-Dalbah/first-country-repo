@@ -1,49 +1,69 @@
-<div class="row p-3 ms-2 me-2 details-page">
-  <a href="/" class="p-0 d-inline-block col-4">
-    <button
-      class="shadow-hard py-2 px-3 border-0"
-      style="background-color: var(--white)"
-    >
-      <i class="fa-solid fa-arrow-left me-2"></i> Back
-    </button>
-  </a>
-
-  <img class="col-12 p-0 my-5" ng-src="{{$ctrl.country.flags.png}}" alt="" />
-  <h1 class="fw-bolder mb-5">{{$ctrl.country.name.common}}</h1>
-  <div class="mb-5">
-    <p><span class="fw-bold">Native Name: </span> {{$ctrl.nativeName}}</p>
-    <p>
-      <span class="fw-bold">Population: </span> {{$ctrl.country.population}}
-    </p>
-    <p><span class="fw-bold">Region: </span> {{$ctrl.country.region}}</p>
-    <p><span class="fw-bold">Sub Region: </span> {{$ctrl.country.subregion}}</p>
-    <p><span class="fw-bold">Capital: </span> {{$ctrl.country.capital[0]}}</p>
-  </div>
-  <div class="mb-5">
-    <p>
-      <span class="fw-bold">Top Level Domain: </span> {{$ctrl.country.tld[0]}}
-    </p>
-    <p>
-      <span class="fw-bold">Currencies: </span>
-      <span ng-repeat="currency in $ctrl.currencies"
-        >{{currency.name}}{{$last ? "" : ", "}}</span
-      >
-    </p>
-    <p>
-      <span class="fw-bold">Languages: </span>
-      <span ng-repeat="language in $ctrl.languages"
-        >{{language}}{{$last ? "" : ", "}}
-      </span>
-    </p>
-  </div>
-  <div>
-    <p class="fw-bold fs-5">Border Countries:</p>
-    <div class="d-flex flex-wrap justify-content-center gap-2">
-      <div
-        ng-repeat="neighbor in $ctrl.neighbors"
-        class="bg-white px-3 py-2 shadow-hard"
-      >
-        <span>{{neighbor}}</span>
+<div class="container">
+  <div class="row p-3 details-page justify-content-lg-between">
+    <div class="mb-5">
+      <a href="/" class="p-0 d-inline-block w-auto">
+        <button
+          class="shadow-hard py-2 px-3 border-0"
+          style="background-color: var(--white)"
+        >
+          <i class="fa-solid fa-arrow-left me-2"></i> Back
+        </button>
+      </a>
+    </div>
+    <div class="col-12 col-lg-5 mb-5">
+      <img
+        class="p-0 w-100 h-auto"
+        ng-src="{{$ctrl.country.flags.png}}"
+        alt=""
+      />
+    </div>
+    <div class="col-lg-6">
+      <h1 class="fw-bolder mb-5">{{$ctrl.country.name.common}}</h1>
+      <div class="d-sm-flex">
+        <div class="mb-5">
+          <p><span class="fw-bold">Native Name: </span> {{$ctrl.nativeName}}</p>
+          <p>
+            <span class="fw-bold">Population: </span>
+            {{$ctrl.country.population}}
+          </p>
+          <p><span class="fw-bold">Region: </span> {{$ctrl.country.region}}</p>
+          <p>
+            <span class="fw-bold">Sub Region: </span>
+            {{$ctrl.country.subregion}}
+          </p>
+          <p>
+            <span class="fw-bold">Capital: </span> {{$ctrl.country.capital[0]}}
+          </p>
+        </div>
+        <div class="mb-5">
+          <p>
+            <span class="fw-bold">Top Level Domain: </span>
+            {{$ctrl.country.tld[0]}}
+          </p>
+          <p>
+            <span class="fw-bold">Currencies: </span>
+            <span ng-repeat="currency in $ctrl.currencies"
+              >{{currency.name}}{{$last ? "" : ", "}}</span
+            >
+          </p>
+          <p>
+            <span class="fw-bold">Languages: </span>
+            <span ng-repeat="language in $ctrl.languages"
+              >{{language}}{{$last ? "" : ", "}}
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="d-lg-flex align-items-center gap-2">
+        <p class="fw-bold fs-5 m-lg-0">Border Countries:</p>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <div
+            ng-repeat="neighbor in $ctrl.neighbors"
+            class="bg-white px-3 py-2 shadow-hard"
+          >
+            <span>{{neighbor}}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

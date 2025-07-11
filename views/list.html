@@ -47,7 +47,7 @@
       ng-repeat="country in countries | filter: {name: {common: search}} | filter: {region: selectedRegion} | orderBy: 'name.common'"
     >
       <a href="/countries/{{country.name.common}}" class="text-decoration-none">
-        <country-page country="country"></country-page>
+        <country-card country="country"></country-card>
       </a>
     </div>
   </div>
