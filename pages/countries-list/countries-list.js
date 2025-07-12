@@ -1,6 +1,6 @@
 angular.module("myApp").component("countriesListPage", {
   templateUrl: "./pages/countries-list/countries-list.html",
-  controller: [
+  controller: [ //this array is better for minification (instead of writing the function alone)
     "$scope",
     "$http",
     function ($scope, $http) {
