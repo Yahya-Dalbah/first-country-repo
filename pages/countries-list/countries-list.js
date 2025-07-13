@@ -1,22 +1,19 @@
 angular.module("myApp").component("countriesListPage", {
   templateUrl: "./pages/countries-list/countries-list.html",
-  controller: [ //this array is better for minification (instead of writing the function alone)
+  controller: [
+    //this array is better for minification (instead of writing the function alone)
     "$scope",
-    "$http",
-    function ($scope, $http) {
+    "countriesService",
+    function ($scope,  countriesService) {
       $scope.regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
       $scope.selectedRegion = "";
       $scope.selectRegion = function (region) {
         $scope.selectedRegion = region;
       };
-      $http
-        .get(
-          "https://restcountries.com/v3.1/all?fields=name,flags,region,population,capital"
-        )
-        .then((data) => {
-          $scope.countries = data.data;
-          console.log(data.data);
-        });
+       countriesService.getAllCountries().then((data) => {
+        $scope.countries = data.data;
+        console.log(data.data);
+      });
     },
   ],
 });

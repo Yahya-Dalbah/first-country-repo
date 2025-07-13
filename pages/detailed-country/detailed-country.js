@@ -2,14 +2,12 @@ angular.module("myApp").component("detailedCountryPage", {
   templateUrl: "./pages/detailed-country/detailed-country.html",
   controller: [
     "$routeParams",
-    "$http",
+    "countryService",
     "$timeout",
-    function ($routeParams, $http, $timeout) {
+    function ($routeParams, countryService, $timeout) {
       this.$onInit = function () {
-        $http
-          .get(
-            `https://restcountries.com/v3.1/name/${$routeParams.countryName}`
-          )
+        countryService
+          .getCountryByName($routeParams.countryName)
           .then((response) => {
             const self = this;
             self.country = response.data[0];
@@ -22,7 +20,7 @@ angular.module("myApp").component("detailedCountryPage", {
             self.languages = Object.values(self.country.languages);
             let bordersCodes = self.country.borders;
             let promises = bordersCodes.map((code) =>
-              $http.get(`https://restcountries.com/v3.1/alpha/${code}`)
+              countryService.getCountryByCode(code)
             );
             Promise.all(promises).then((countries) => {
               $timeout(() => {
