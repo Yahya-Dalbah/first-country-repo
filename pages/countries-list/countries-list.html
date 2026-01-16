@@ -1,0 +1,54 @@
+<div class="mx-3 home-page">
+  <div class="row justify-content-between">
+    <div class="col-md-6">
+      <div class="input-group mb-3 shadow-soft rounded py-2">
+        <span class="input-group-text px-4 border-0 bg-white">
+          <i
+            class="fa-solid fa-magnifying-glass"
+            style="color: var(--dark-gray)"
+          ></i>
+        </span>
+        <input
+          type="text"
+          class="form-control border-0 focus-ring focus-outline-none placeholder-text-gray"
+          placeholder="Search for a country"
+          style="color: var(--dark-gray)"
+          ng-model="search"
+        />
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="dropdown">
+        <button
+          class="shadow-soft p-3 border-0 rounded text-start d-flex align-items-center"
+          style="background-color: var(--white); font-size: 16px; width: 15rem"
+          data-bs-toggle="dropdown"
+        >
+          <span>{{selectedRegion ? selectedRegion : "Filter by region"}}</span>
+          <img
+            src="../assets/arrow-down.png"
+            class="ms-auto"
+            alt=""
+            width="16"
+            height="16"
+          />
+        </button>
+        <ul class="dropdown-menu border-0 shadow-sm" style="width: 15rem">
+          <li ng-repeat="region in regions" ng-click="selectRegion(region)">
+            <a class="dropdown-item" style="cursor: pointer">{{region}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row px-4">
+    <div
+      class="col-12 col-md-6 col-xl-4 col-xxl-3"
+      ng-repeat="country in countries | filter: {name: {common: search}} | filter: {region: selectedRegion} | orderBy: 'name.common'"
+    >
+      <a href="/countries/{{country.name.common}}" class="text-decoration-none">
+        <country-card country="country"></country-card>
+      </a>
+    </div>
+  </div>
+</div>
